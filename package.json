@@ -1,0 +1,35 @@
+{
+  "name": "e-commerce-udemy",
+  "version": "1.0.0",
+  "description": "E-Commerce",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node mern-course-back/server",
+    "server": "nodemon mern-course-back/server",
+    "client": "npm start --prefix mern-course-front",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node mern-course-back/seeder",
+    "data:destroy": "node mern-course-back/seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/german664/proshop.git"
+  },
+  "author": "German Mora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/german664/proshop/issues"
+  },
+  "homepage": "https://github.com/german664/proshop#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.10.11",
+    "nodemon": "^2.0.6"
+  }
+}
