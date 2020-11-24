@@ -50,7 +50,7 @@ const OrdersListScreen = ({ history }) => {
                                 <td>{order.user.name}</td>
                                 <td>${order.totalPrice}</td>
                                 <td>{order.isPaid ? <i className="fas fa-check" style={{ "color": "green" }} /> : <i className="fas fa-times" style={{ "color": "red" }} />}</td>
-                                <td>{order.delivered ? <i className="fas fa-check" style={{ "color": "green" }} /> : <i className="fas fa-times" style={{ "color": "red" }} />}</td>
+                                <td>{order.isDelivered ? <i className="fas fa-check" style={{ "color": "green" }} /> : <i className="fas fa-times" style={{ "color": "red" }} />}</td>
 
                                 <td><LinkContainer to={`/order/${order._id}`}>
                                     <Button variant="light" className="btn-sm"><i className="fas fa-edit" />Details</Button>
