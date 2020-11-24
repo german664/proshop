@@ -3,8 +3,10 @@ import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import Loader from '../components/Loader/Loader'
-import { Button, Col, Form, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row, Table } from 'react-bootstrap'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import { listMyOrders } from '../actions/orderActions'
+import { Link } from 'react-router-dom'
 
 
 const ProfileScreen = ({ location, history }) => {
@@ -17,6 +19,9 @@ const ProfileScreen = ({ location, history }) => {
     const dispatch = useDispatch()
     const userDetails = useSelector(state => state.userDetails)
     const { loading, error, user } = userDetails
+
+    const orderMyList = useSelector(state => state.orderMyList)
+    const { loading: loadingOrders, error: errorOrders, orders } = orderMyList
 
     const userUpdate = useSelector(state => state.userUpdateProfile)
     const { success } = userUpdate
@@ -45,6 +50,7 @@ const ProfileScreen = ({ location, history }) => {
             if (!user.name) {
                 dispatch({ type: USER_UPDATE_PROFILE_RESET })
                 dispatch(getUserDetails('profile'))
+                dispatch(listMyOrders())
 
             } else {
                 setName(user.name)
@@ -105,6 +111,57 @@ const ProfileScreen = ({ location, history }) => {
             </Col>
             <Col md={9} className="mt-4">
                 <h2>My Orders</h2>
+                {loadingOrders ? <Loader /> :
+                    errorOrders ? <ErrorMessage variant="danger">{errorOrders}</ErrorMessage> : (
+                        <Table striped bordered hover responsive className="table-sm">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TOTAL</th>
+                                    <th>PAID</th>
+                                    <th>DELIVERED</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {orders.map(order => (
+                                    <tr key={order._id}>
+                                        <td>{order._id}</td>
+
+                                        <td>{order.totalPrice}</td>
+                                        <td>
+                                            {order.isPaid ? (
+                                                order.paidAt.substring(0, 10)
+                                            ) : (
+                                                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                                                )}
+                                        </td>
+                                        <td>
+                                            {order.isDelivered ? (
+                                                order.deliveredAt.substring(0, 10)
+                                            ) : (
+                                                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                                                )}
+                                        </td>
+                                        <td>
+                                            <Link to={`/order/${order._id}`}>
+                                                <Button className='btn-sm' variant='light'>
+                                                    Details
+                                                </Button>
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                )
+
+                                )}
+                            </tbody>
+
+
+                        </Table>
+                    )
+
+                }
+
             </Col>
         </Row>
     )

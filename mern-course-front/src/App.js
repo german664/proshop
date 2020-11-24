@@ -13,6 +13,11 @@ import ShippingScreen from "./Screens/ShippingScreen"
 import PaymentMethodScreen from "./Screens/PaymentMethodScreen"
 import PlaceOrderScreen from "./Screens/PlaceOrderScreen"
 import OrderScreen from "./Screens/OrderScreen"
+import UserListScreen from "./Screens/UserListScreen"
+import UserEditScreen from "./Screens/UserEditScreen"
+import ProductListScreen from "./Screens/ProductListScreen"
+import ProductEditScreen from "./Screens/ProductEditScreen"
+import OrdersListScreen from "./Screens/OrdersListScreen"
 
 function App() {
   return (
@@ -20,7 +25,6 @@ function App() {
       <Header />
       <main>
         <Container>
-          <Route path="/" component={HomeScreen} exact />
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/login" component={LoginScreen} />
@@ -30,6 +34,16 @@ function App() {
           <Route path="/payment" component={PaymentMethodScreen} />
           <Route path="/placeorder" component={PlaceOrderScreen} />
           <Route path="/order/:id" component={OrderScreen} />
+          <Route path="/admin/userlist" component={UserListScreen} />
+          <Route path="/admin/user/:id/edit" component={UserEditScreen} />
+          <Route path="/admin/productlist" component={ProductListScreen} exact />
+          <Route path="/admin/productlist/:pageNumber" component={ProductListScreen} exact />
+          <Route path="/admin/product/:id/edit" component={ProductEditScreen} />
+          <Route path="/admin/orderlist" component={OrdersListScreen} />
+          <Route path="/search/:keyword" component={HomeScreen} exact />
+          <Route path="/search/:keyword/page/:pageNumber" component={HomeScreen} exact />
+          <Route path="/page/:pageNumber" component={HomeScreen} exact />
+          <Route path="/" component={HomeScreen} exact />
 
         </Container>
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { savePaymentMethod } from '../actions/cartActions'
 import { useDispatch, useSelector } from 'react-redux'
-import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import { Button, Form, Col } from 'react-bootstrap'
 import FormContainer from '../components/FormContainer/FormContainer'
 import CheckoutSteps from '../components/Checkout/CheckoutSteps'

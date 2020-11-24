@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage/ErrorMessage'
 import Loader from '../components/Loader/Loader'
 import FormContainer from '../components/FormContainer/FormContainer'
-import { Button, Col, Form, NavLink, Row } from 'react-bootstrap'
+import { Button, Col, Form, Row } from 'react-bootstrap'
 
 
 const LoginScreen = ({ location, history }) => {

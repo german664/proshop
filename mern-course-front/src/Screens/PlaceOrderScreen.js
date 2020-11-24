@@ -12,7 +12,7 @@ const PlaceOrderScreen = ({ history }) => {
     const dispatch = useDispatch()
     const cart = useSelector(state => state.cart)
     const orderCreate = useSelector(state => state.orderCreate)
-    const { order, success, error, loading } = orderCreate
+    const { order, success, error } = orderCreate
 
     const placeOrderHandler = (e) => {
         dispatch(createOrder({ orderItems: cart.cartItems, shippingAddress: cart.shippingAddress, paymentMethod: cart.paymentMethod, itemsPrice: cart.itemsPrice, shippingPrice: cart.shippingPrice, taxesPrice: cart.taxesPrice, totalPrice: cart.totalPrice }))
