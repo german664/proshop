@@ -10,7 +10,7 @@ node_modules/
 /coverage
 
 # production
-/build
+/mern-course-front/build
 
 # misc
 .DS_Store

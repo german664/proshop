@@ -10,7 +10,8 @@
     "client": "npm start --prefix mern-course-front",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node mern-course-back/seeder",
-    "data:destroy": "node mern-course-back/seeder -d"
+    "data:destroy": "node mern-course-back/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix mern-course-front npm run build --prefix mern-course-front"
   },
   "repository": {
     "type": "git",
