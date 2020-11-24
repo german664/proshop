@@ -1,1 +1,1 @@
-web: node mern-course-backend/server.js
+web: node mern-course-back/server.js
